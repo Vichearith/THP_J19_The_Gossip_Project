@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  like: false
+  comment_id: 1
+  gossip_id: 1
+
+two:
+  like: false
+  comment_id: 1
+  gossip_id: 1
