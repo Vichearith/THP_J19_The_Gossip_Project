@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_01_161911) do
+ActiveRecord::Schema.define(version: 2019_08_03_133523) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 2019_08_01_161911) do
     t.index ["tag_id"], name: "index_join_table_gossips_tags_on_tag_id"
   end
 
+  create_table "join_table_message_recipients", force: :cascade do |t|
+    t.integer "private_message_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["private_message_id"], name: "index_join_table_message_recipients_on_private_message_id"
+    t.index ["recipient_id"], name: "index_join_table_message_recipients_on_recipient_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -60,11 +69,9 @@ ActiveRecord::Schema.define(version: 2019_08_01_161911) do
 
   create_table "private_messages", force: :cascade do |t|
     t.text "content"
-    t.integer "recipient_id"
     t.integer "sender_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["recipient_id"], name: "index_private_messages_on_recipient_id"
     t.index ["sender_id"], name: "index_private_messages_on_sender_id"
   end
 
